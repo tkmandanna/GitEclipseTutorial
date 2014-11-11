@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project name="CircDebt" default="main" basedir=".">
+    <property name="src.dir" location="src"/>
+    <property name="build.dir" location="bin"/>
+    <property name="dist.dir" location="dist"/>
+    <property name="docs.dir" location="docs"/>
+     <property name="lib.dir" location="lib"/>
+     
+    <path id="build.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    
+   <target name="clean">
+       <delete dir="${build.dir}"/>
+   </target> 
+   
+   <target name="makedir">
+       <mkdir dir="${build.dir}"/>
+   </target>
+   
+   <target name="compile" depends="clean,makedir">
+       <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" classpathref="build.classpath"/>
+   </target>
+   
+    <target name="main" depends="compile">
+       <description>Main target</description>
+   </target>
+   
+   
+</project>
